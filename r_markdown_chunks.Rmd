@@ -1,0 +1,46 @@
+---
+title: "r_markdown_chunks"
+author: "Hannah E. Houts"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+## Types of Rmd chunks:
+
+This is a standard chunk
+```{r}
+x <- "hi!"
+print(x)
+```
+
+
+this is if `eval = FALSE`
+```{r, eval=FALSE}
+x <- "eval is false!"
+print(x)
+```
+
+(Print in a new chunk, where eval is not set to false)
+```{r}
+print(x)
+```
+
+This is if `echo = FALSE`
+```{r, echo =FALSE}
+#this is code
+x<- "hi, x was changed, but the code is hidden!"
+#code
+#code-y code-code
+print(x)
+```
+
+note `message`, `warning`, and `error`
+
+check out [this cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+

@@ -1,0 +1,116 @@
+---
+title: "tidyverse_speedrun"
+author: "Hannah E. Houts"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Tidyverse?
+"The tidyverse is an opinionated collection of R packages designed for data science. 
+All packages share an underlying design philosophy, grammar, and data structures."
+
+## Helpful hotkeys- 
+cmd-shift-m or ctrl-shift-m will make an r Pipe
+cmd-opt-i or ctrl-opt-i will make an r code chunk
+hold opt key while dragging with mouse for vertical edit/highlighting
+
+
+## Install and load packages
+
+```{r}
+#install.packages(tidyverse)
+#install.packages(janitor)
+#install.packages(here)
+#install.packages(palmerpenguins)
+```
+
+
+```{r, message=FALSE}
+library(tidyverse)
+library(janitor)
+library(here)
+library(palmerpenguins)
+```
+
+
+## Load data
+
+use tidyverse `read_csv`
+
+```{r}
+supers <- read_csv("data/heroes_information.csv")
+```
+
+## quick summaries
+
+#### column names
+```{r}
+names(supers)
+```
+
+get rid of spaces? get rid of capitalization?
+```{r}
+supers <- clean_names(supers)
+
+names(supers)
+# clean_names() is in the janitor package.
+# You can also run like this
+# janitor::clean_names()
+```
+
+
+
+
+data summaries:
+
+```{r}
+
+### structure, 2/10
+#str(supers)
+
+### dimensions, 2/10
+#dim(supers)
+
+### glimpse, 8/10
+### gives dim, col names, col types, and head of cols. ugly
+#glimpse(supers)
+
+
+### summary, 9.5/10
+### gives info about each column. kind of ugly
+#summary(supers)
+
+### tabyl, 8/10
+### gives info about specified column, from janitor package
+tabyl(supers$eye_color)
+```
+
+
+### reducing columns & rows with select() and filter()
+
+
+
+```{r}
+names(supers)
+```
+
+
+
+```{r}
+supers_select <- supers %>% 
+  select(name, hair_color, eye_color, skin_color)
+
+names(supers_select)
+```
+
+```{r}
+supers_select <- supers %>% 
+  select(-publisher)
+
+names(supers_colors)
+```
